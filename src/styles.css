@@ -31,7 +31,6 @@
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
   z-index: 100;
-  animation: slideUp 0.4s ease-out;
   border-radius: 12px;
 }
 
@@ -47,24 +46,13 @@
   background: #0056b3 !important;
 }
 
-/* Animation */
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
 /* Input Wrapper */
 .ui-input-wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
   width: 100%;
+  outline: none;
 }
 
 /* Input Field Container */
@@ -86,10 +74,12 @@
   margin-top: 10px;
 }
 
-.ui-input-container:focus-within {
+/* Highlight When Focused */
+.ui-input-container.focused {
   border-color: #0055b0;
-  border-width: 5px;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+  border-width: 3px;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+  transform: scale(1.02);
 }
 
 @keyframes blink {

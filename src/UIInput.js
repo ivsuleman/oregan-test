@@ -4,7 +4,10 @@ import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 
 function UIInput({
+  id,
   isPassword = false,
+  activeInputId,
+  setActiveInputId,
   onValueChange,
   placeholder = "Enter text",
 }) {
@@ -19,10 +22,12 @@ function UIInput({
   // Blink cursor effect
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      if (isFocused) setCursorVisible((prev) => !prev);
+      if (isFocused && activeInputId === id) {
+        setCursorVisible((prev) => !prev);
+      }
     }, 500);
     return () => clearInterval(cursorInterval);
-  }, [isFocused]);
+  }, [isFocused, activeInputId, id]);
 
   // Handle password masking
   const updateMaskedValue = (newValue) => {
@@ -43,20 +48,20 @@ function UIInput({
   const handleFocus = () => {
     setIsFocused(true);
     setShowKeyboard(true); // Show on-screen keyboard
+    setActiveInputId(id); // Mark current input as active
   };
 
   const handleBlur = () => setIsFocused(false);
 
-  const handleKeyPress = (e) => {
+  // Handle physical keyboard input
+  const handleKeyDown = (e) => {
     if (e.key === "Backspace") {
       handleBackspace();
-      return;
-    }
-    if (e.key.length === 1) {
+    } else if (e.key.length === 1) {
       const newValue = input + e.key;
       setInput(newValue);
       updateMaskedValue(newValue);
-      if (onValueChange) onValueChange(newValue);
+      if (onValueChange) onValueChange(newValue); // Update parent state
     }
   };
 
@@ -64,43 +69,44 @@ function UIInput({
     const newValue = input.slice(0, -1);
     setInput(newValue);
     updateMaskedValue(newValue);
-    if (onValueChange) onValueChange(newValue);
+    if (onValueChange) onValueChange(newValue); // Update parent state
   };
 
+  // Handle on-screen keyboard input
   const handleKeyboardInput = (value) => {
+    if (activeInputId !== id) return; // Only update focused input
     if (value === "{bksp}") {
-      handleBackspace(); // Handle Backspace on keyboard
-    } else {
-      setInput(value);
-      updateMaskedValue(value);
-      if (onValueChange) onValueChange(value);
+      handleBackspace();
+    } else if (value.length === 1) {
+      const newValue = input + value;
+      setInput(newValue);
+      updateMaskedValue(newValue);
+      if (onValueChange) onValueChange(newValue); // Update parent state
     }
   };
 
   const toggleShowHide = () => {
     setIsHidden((prev) => !prev);
-    if (!isHidden) {
-      setDisplayValue(input.replace(/./g, "*"));
-    } else {
-      setDisplayValue(input);
-    }
+    setDisplayValue(!isHidden ? input.replace(/./g, "*") : input);
   };
 
   return (
-    <div className="ui-input-wrapper">
-      <div
-        className={`ui-input-container ${input ? "filled" : ""}`}
-        onClick={handleFocus}
-        onBlur={handleBlur}
-        tabIndex={0}
-        onKeyDown={handleKeyPress}
-      >
+    <div
+      className="ui-input-wrapper"
+      tabIndex={0}
+      onClick={handleFocus}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
+    >
+      <div className={`ui-input-container ${isFocused ? "focused" : ""}`}>
         {!input && !isFocused && (
           <div className="placeholder">{placeholder}</div>
         )}
         <div className="ui-input">
           {displayValue}
-          {isFocused && cursorVisible && <span className="cursor">|</span>}
+          {isFocused && cursorVisible && activeInputId === id && (
+            <span className="cursor">|</span>
+          )}
         </div>
       </div>
 
@@ -116,7 +122,7 @@ function UIInput({
       )}
 
       {/* On-Screen Keyboard */}
-      {showKeyboard && (
+      {showKeyboard && activeInputId === id && (
         <div className="keyboard-container">
           <Keyboard
             onKeyPress={handleKeyboardInput}
