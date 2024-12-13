@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/oregan-test/static/css/main.4bae5be1.css",
+    "main.js": "/oregan-test/static/js/main.7b34afa8.js",
+    "index.html": "/oregan-test/index.html",
+    "main.4bae5be1.css.map": "/oregan-test/static/css/main.4bae5be1.css.map",
+    "main.7b34afa8.js.map": "/oregan-test/static/js/main.7b34afa8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4bae5be1.css",
+    "static/js/main.7b34afa8.js"
+  ]
+}
