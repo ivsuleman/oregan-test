@@ -10,7 +10,7 @@
 ### 2. Input Validation
 
 - Real-time validation of the user input as the user types. i.e. if the user types an invalid character then the input element border turns red or a pop-up appears detailing the error.
-- Tooltips added to the input fields to provide guidance on input requirements i.e. "Must include @".
+- Tooltips added to the input fields to provide guidance on input requirements i.e. "Must include @", "max/min length of input etc."
 
 ### 3. Password Management
 
