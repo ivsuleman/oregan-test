@@ -1,10 +1,15 @@
 # Oregan Tech Test
 
-## Available Scripts
+## App
+The app is deployed and can be viewed here:
+https://ivsuleman.github.io/oregan-test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Pre-Requisites
+## Run in Local Enviornment
+This project was bootstrapped with:
+[Create React App](https://github.com/facebook/create-react-app).
+
+### 0. Pre-Requisites
 
 1. Install Node.js
 2. Install NPM
@@ -12,11 +17,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm install`
+### 1. `npm install`
 
 Installs the app and dependent code in your local enviornment
 
-### `npm start`
+### 2. `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
