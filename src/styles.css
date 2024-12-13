@@ -1,0 +1,144 @@
+/* Center the App with Background */
+.App {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 8vh;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+      to bottom right,
+      rgba(0, 123, 255, 0.7),
+      rgba(0, 190, 92, 0.951)
+    ),
+    url("https://source.unsplash.com/1600x900/?technology,abstract");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  gap: 20px;
+}
+
+/* Keyboard Container Centered */
+.keyboard-container {
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  z-index: 100;
+  animation: slideUp 0.4s ease-out;
+  border-radius: 12px;
+}
+
+/* Keyboard Button Customization */
+.keyboard-button {
+  background: #007bff !important;
+  color: white !important;
+  border-radius: 4px !important;
+  font-size: 16px !important;
+}
+
+.keyboard-button:hover {
+  background: #0056b3 !important;
+}
+
+/* Animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Input Wrapper */
+.ui-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Input Field Container */
+.ui-input-container {
+  outline: none;
+  border: 2px solid #ccc;
+  padding: 10px 12px;
+  width: 300px;
+  max-width: 300px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: white;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.ui-input-container:focus-within {
+  border-color: #0055b0;
+  border-width: 5px;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Show/Hide Button */
+.show-hide-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  margin-left: 8px;
+  transition: color 0.3s ease;
+}
+
+.show-hide-button:hover {
+  color: #007bff;
+}
+
+/* Sign In Button */
+.sign-in-button {
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100px;
+  margin-top: 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.sign-in-button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.sign-in-button:active {
+  background: #004494;
+  transform: translateY(1px);
+}
+
+h1 {
+  color: white;
+}
