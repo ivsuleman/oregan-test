@@ -3,7 +3,7 @@
 ### 1. Accessibility
 
 - Make the screen WCAG compliant.
-- Ensure UI is navigable using a physical keyboard for users who cannot use a mouse (add tabindex="0" property to elements that can be focussed).
+- Ensure the UI is navigable using a physical keyboard for users who cannot use a mouse (add tabindex="0" property to elements that can be focussed).
 - Add Aria Labels to UI elements for users who are visually impaired and use screen readers.
 - Ensure the colours used make the text and elements clear and readable, especially for those who have visual impairments such as colour blindness.
 
